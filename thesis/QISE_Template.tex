@@ -1,4 +1,3 @@
-%/Users/jinboyu/Downloads/Written Report (1)%!TEX encoding=UTF-8
 %!TEX program=xelatex
 \documentclass[pre,twocolumn,floatfix]{revtex4-1}
 \usepackage{xeCJK} %使用xeCJK宏包
@@ -47,7 +46,7 @@ This report investigates the application of Quantum Neural Networks (QNNs) to fi
 
 
 \section{Introduction} \label{1}%------------------------------
-The quantum Ising model is a fundamental model in condensed matter physics, describing a system of interacting spins subjected to a transverse magnetic field. It plays a crucial role as a testbed for both theoretical analysis and computational techniques because of its exact solvability in one dimension and its relevance to quantum phase transitions. Although exact diagonalization offers highly accurate results for small system sizes, its computational cost grows exponentially with the number of spins, rendering it impractical for larger systems. This limitation motivates the exploration of alternative classical methods, as well as the potential application of Quantum Neural Networks (QNNs) to efficiently approximate ground states and gain further insight into quantum critical phenomena.
+The quantum Ising model is a fundamental model in condensed matter physics, describing a system of interacting spins subjected to a transverse magnetic field. It plays a crucial role as a testbed for both theoretical analysis and computational techniques because of its exact solvability in one dimension and its relevance to quantum phase transitions. Although exact diagonalization offers highly accurate results for small system sizes, its computational cost grows exponentially with the number of spins, rendering it impractical for larger systems. This limitation motivates the exploration of alternative classical methods, as well as the potential application of Quantum Neural Networks (QNNs) to efficiently approximate ground states and gain further insight into quantum critical phenomena.\cite{QML}
 
 
 
@@ -113,8 +112,7 @@ Because of its exactness and transparency, ED is widely used to study quantum ph
 
 
 \subsection{Density Matrix Renormalization Group (DMRG)}
-The Density Matrix Renormalization Group (DMRG) is a powerful numerical method for studying the ground state properties of low-dimensional quantum many-body systems, particularly in one dimension. Introduced by S.~R.~White in the early 1990s, DMRG has become one of the most accurate techniques for solving strongly correlated models such as the transverse-field Ising model. It is especially well-suited for computing the ground state energy and local observables (e.g., magnetization) of large systems, where exact diagonalization becomes intractable.
-
+The Density Matrix Renormalization Group (DMRG) is a powerful numerical method for studying the ground state properties of low-dimensional quantum many-body systems, particularly in one dimension. Introduced by S.~R.~White in the early 1990s, DMRG has become one of the most accurate techniques for solving strongly correlated models such as the transverse-field Ising model. It is especially well-suited for computing the ground state energy and local observables (e.g., magnetization) of large systems, where exact diagonalization becomes intractable.\cite{simple-dmrg}
 \subsubsection{Basic Procedure.}
 DMRG works by iteratively constructing a large quantum system from smaller blocks while optimally truncating the Hilbert space to retain only the most relevant quantum states. The typical DMRG setup considers a one-dimensional chain divided into four parts: a system block (S), an environment block (E), and two physical sites between them. At each step, a "superblock" Hamiltonian is built from these components, and its ground state is calculated.
 
@@ -143,7 +141,7 @@ One of the key strengths of DMRG lies in its ability to drastically reduce the e
 This efficient truncation ensures that DMRG scales polynomially with system size and remains tractable for large $N$. In addition, DMRG is variational, so the obtained ground state energy is an upper bound to the true ground state energy. It also provides accurate access to local observables such as magnetization in the $x$- and $z$-directions. These features make DMRG an ideal benchmark for evaluating the performance of variational quantum algorithms when $N$ becomes large.
 
 % -----------------------------------4----------------------------------------
-\section{Quantum Machine Learning Method} 
+\section{Quantum Machine Learning Method\cite{qiskit-ml-tutorials}} 
 \subsection{Introduction}
 Quantum Machine Learning represents the intersection of quantum computing and classical machine learning techniques, offering potential advantages in:
 \begin{itemize}
@@ -544,6 +542,14 @@ for n, E0, mz, mx in results:
 
 \section{Declaration}
 We hereby declare that all the work done in this project is of our independent effort. To see more details, please move forward to our github repository \textbf{quantum-many-body-by-QML}. Here is (https://github.com/jindahe/quantum-many-body-by-QML) github link.
+\begin{thebibliography}{99}
+\bibitem{QML}
+    J. Li, Y. Liu, and X. Wang, "Quantum Machine Learning: A Survey and Research Directions," IEEE Transactions on Quantum Engineering, vol. 2, no. 1, pp. 1-22, 2021.  
+\bibitem{simple-dmrg}
+    S. R. White, "simple-dmrg: A simple Python implementation of the Density Matrix Renormalization Group (DMRG) algorithm," GitHub repository, https://github.com/simple-dmrg/simple-dmrg, accessed June 1, 2025.
+\bibitem{qiskit-ml-tutorials}
+    Qiskit Machine Learning Tutorials, Qiskit Community, https://qiskit-community.github.io/qiskit-machine-learning/tutorials/index.html, accessed June 1, 2025.
 
+\end{thebibliography}
 
 \end{document}
