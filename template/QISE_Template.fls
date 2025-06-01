@@ -949,7 +949,6 @@ INPUT images/qml.png
 INPUT ./images/QNN.png
 INPUT ./images/QNN.png
 INPUT images/QNN.png
-INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmtt8.tfm
 INPUT ./images/ansatz.png
 INPUT ./images/ansatz.png
 INPUT images/ansatz.png
@@ -998,6 +997,7 @@ INPUT images/cmp_X.png
 INPUT ./images/cmp_Z.png
 INPUT ./images/cmp_Z.png
 INPUT images/cmp_Z.png
+INPUT /usr/local/texlive/2023/texmf-dist/fonts/tfm/public/cm/cmtt8.tfm
 INPUT ./QISE_Template.bbl
 INPUT QISE_Template.bbl
 INPUT ./QISE_Template.bbl

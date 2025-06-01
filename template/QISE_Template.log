@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.25)  1 JUN 2025 16:04
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2024.1.25)  1 JUN 2025 16:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -859,9 +859,18 @@ Package caption Info: End \AtBeginDocument code.
 File: images/截屏2025-05-22 21.25.44.png Graphic file (type bmp)
 <images/截屏2025-05-22 21.25.44.png>
  [1]
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 95.
+
+
+LaTeX Warning: A float is stuck (cannot be placed) on input line 95.
+
+
+Class revtex4-1 Warning: Deferred float stuck during \clearpage processing.
+
 File: images//屏幕截图 2025-05-30 165036.png Graphic file (type bmp)
 <images//屏幕截图 2025-05-30 165036.png>
- [2]
+[2]
 
 LaTeX Warning: A float is stuck (cannot be placed) on input line 142.
 
@@ -897,25 +906,22 @@ Package fontspec Info: Font family 'FandolFang-Regular(0)' created for font
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
 [3]
-LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <8> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 218.
 File: images/ansatz.png Graphic file (type bmp)
 <images/ansatz.png>
- [4]
 File: images/iteration.png Graphic file (type bmp)
 <images/iteration.png>
+ [4]
 File: images/classical_solution.png Graphic file (type bmp)
 <images/classical_solution.png>
- [5]
 File: images/E_0_dia.png Graphic file (type bmp)
 <images/E_0_dia.png>
 File: images/E_0_dia_1.png Graphic file (type bmp)
 <images/E_0_dia_1.png>
+ [5]
 File: images/E_DMRG.png Graphic file (type bmp)
 <images/E_DMRG.png>
 File: images/mx_DMRG.png Graphic file (type bmp)
 <images/mx_DMRG.png>
- [6]
 File: images/energy_vs_h_multiprocess.png Graphic file (type bmp)
 <images/energy_vs_h_multiprocess.png>
 
@@ -929,7 +935,7 @@ Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:mapping=
 Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:mapping=tex-text;!
-[7]
+[6]
 File: images/magnetization_vs_h_multiprocess.png Graphic file (type bmp)
 <images/magnetization_vs_h_multiprocess.png>
 
@@ -957,6 +963,7 @@ Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:mapping=
 Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:mapping=tex-text;!
+[7]
 Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:mapping=tex-text;!
@@ -965,26 +972,53 @@ Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:mapping=
 Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ⟨ (U+27E8) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ⟩ (U+27E9) in font [lmroman10-regular]:mapping=tex-text;!
-[8]
 File: images/cmp_E.png Graphic file (type bmp)
 <images/cmp_E.png>
 File: images/cmp_X.png Graphic file (type bmp)
 <images/cmp_X.png>
 File: images/cmp_Z.png Graphic file (type bmp)
 <images/cmp_Z.png>
- [9]
+[8]
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <8> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 437.
+
 Missing character: There is no θ (U+03B8) in font [lmmono8-regular]:!
 Missing character: There is no θ (U+03B8) in font [lmmono10-italic]:!
 Missing character: There is no θ (U+03B8) in font [lmmono10-italic]:!
 Missing character: There is no θ (U+03B8) in font [lmmono10-italic]:!
+[9]
+Underfull \hbox (badness 3386) in paragraph at lines 546--547
+[]\TU/lmr/m/n/10 We hereby declare that all the work done in
+ []
+
+
+Underfull \hbox (badness 4927) in paragraph at lines 546--547
+\TU/lmr/m/n/10 this project is of our independent effort. To
+ []
+
+
+Underfull \hbox (badness 7796) in paragraph at lines 546--547
+\TU/lmr/m/n/10 see more details, please move forward to our
+ []
+
+
+Underfull \hbox (badness 6542) in paragraph at lines 546--547
+\TU/lmr/m/n/10 github repository \TU/lmr/bx/n/10 quantum-many-body-by-QML\TU/lmr/m/n/10 .
+ []
+
+
+Underfull \hbox (badness 6016) in paragraph at lines 546--547
+\TU/lmr/m/n/10 Here is (https://github.com/jindahe/quantum-many-
+ []
+
 (./QISE_Template.bbl) [10] (./QISE_Template.aux) ) 
 Here is how much of TeX's memory you used:
- 28115 strings out of 476683
- 624336 string characters out of 5804047
- 3484018 words of memory out of 5000000
- 47843 multiletter control sequences out of 15000+600000
- 518014 words of font info for 80 fonts, out of 8000000 for 9000
+ 27991 strings out of 476683
+ 621425 string characters out of 5804047
+ 2887018 words of memory out of 5000000
+ 47720 multiletter control sequences out of 15000+600000
+ 518006 words of font info for 79 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 84i,8n,89p,1496b,1708s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,8n,89p,1496b,1712s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on QISE_Template.xdv (10 pages, 390924 bytes).
+Output written on QISE_Template.xdv (10 pages, 346536 bytes).

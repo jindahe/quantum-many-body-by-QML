@@ -28,7 +28,7 @@
 
 \begin{document}
 
-\title{《量子信息基础》课题报告}
+\title{Quantum Neural Networks for Ground State of the Transverse-Field Quantum Ising Model}
 
 \author{金泊宇}
 \affiliation{浙江大学竺可桢学院，杭州 310058}
@@ -212,55 +212,6 @@ Use Qiskit's \verb|SparsePauliOp| to represent each Pauli term, which is concise
     \end{equation}
 In which we can easily put $J=1$, and change the $h$ to represent the magnitude of the field strength over coupling.
 
-\textbf{Pseudocode:}
-\begin{lstlisting}[language=Python]
-   FUNCTION build_ising_hamiltonian(n, J, h):
-    // Initialize empty lists to store Pauli strings and their coefficients
-    SET paulis = empty list
-    SET coeffs = empty list
-
-    // --- Construct Z_i Z_{i+1} terms (interaction terms) ---
-    // Loop through each pair of adjacent qubits (from 0 to n-2)
-    FOR i FROM 0 TO n - 2:
-        // Create a list of 'I' (Identity) operators for all n qubits
-        SET label = list of 'I' repeated n times
-
-        // Set the i-th qubit's operator to 'Z'
-        SET label[i] = 'Z'
-
-        // Set the (i+1)-th qubit's operator to 'Z'
-        SET label[i + 1] = 'Z'
-
-        // Join the list into a string and reverse it (Qiskit's convention)
-        ADD JOIN(REVERSE(label)) to paulis list
-
-        // Add the coefficient -J for this term
-        ADD -J to coeffs list
-    END FOR
-
-    // --- Construct X_i terms (transverse field terms) ---
-    // Loop through each individual qubit (from 0 to n-1)
-    FOR i FROM 0 TO n - 1:
-        // Create a list of 'I' (Identity) operators for all n qubits
-        SET label = list of 'I' repeated n times
-
-        // Set the i-th qubit's operator to 'X'
-        SET label[i] = 'X'
-
-        // Join the list into a string and reverse it (Qiskit's convention)
-        ADD JOIN(REVERSE(label)) to paulis list
-
-        // Add the coefficient -h for this term
-        ADD -h to coeffs list
-    END FOR
-
-    // Combine the Pauli strings and coefficients into a SparsePauliOp object
-    // by zipping them together into a list of (Pauli_string, coefficient) tuples
-    RETURN SparsePauliOp.from_list(ZIP(paulis, coeffs))
-
-END FUNCTION
-
-\end{lstlisting}[language=Python]
 \subsubsection{physically inspired ansatz}
 Design a variational circuit with:
 \begin{itemize}
@@ -280,48 +231,6 @@ Design a variational circuit with:
     \label{4}
 \end{figure}
 
-\textbf{Pseudocode:}
-\begin{lstlisting}[language=Python]
-    FUNCTION create_physically_inspired_ansatz(n_qubits, h, J, reps = 3):
-    // Initialize a vector of symbolic parameters
-    SET params = new ParameterVector with name '\theta' and length (2 * n_qubits * reps)
-
-    // Initialize a quantum circuit with n_qubits
-    SET qc = new QuantumCircuit with n_qubits
-
-    // --- Initial State Preparation ---
-    // Calculate an initial rotation angle based on h and J
-    SET init_angle = 2 * ARCTAN(h / J)
-
-    // Apply RY rotation to each qubit for initial state preparation
-    FOR i FROM 0 TO n_qubits - 1:
-        APPLY RY_gate(init_angle) to qubit i
-    END FOR
-
-    // --- Ansatz Part: Multi-layer Rotation and Entanglement ---
-    // Loop for the specified number of repetitions (layers)
-    FOR rep FROM 0 TO reps - 1:
-        // Apply parameterized RY and RX rotations to each qubit in the current layer
-        FOR i FROM 0 TO n_qubits - 1:
-            // Apply RY gate with parameter from params vector
-            APPLY RY_gate(params[ (2 * n_qubits * rep) + i ]) to qubit i
-
-            // Apply RX gate with parameter from params vector
-            APPLY RX_gate(params[ (2 * n_qubits * rep) + n_qubits + i ]) to qubit i
-        END FOR
-
-        // Apply CNOT (CX) gates for entanglement between adjacent qubits
-        FOR i FROM 0 TO n_qubits - 2:
-            APPLY CX_gate with control qubit i and target qubit (i + 1)
-        END FOR
-    END FOR
-
-    // Return the constructed quantum circuit and the list of symbolic parameters
-    RETURN qc, list(params)
-
-END FUNCTION
-\end{lstlisting}
-
 \subsubsection{Training Process}
 It's clear to break it into two part by VQAs.
 \begin{enumerate}
@@ -329,21 +238,10 @@ It's clear to break it into two part by VQAs.
     \begin{itemize}
         \item \verb|EstimatorQNN| for expectation value calculations and use \verb|TorchConnector| to interface with pyTorch. 
         The functions are defined as follows:
-        \begin{lstlisting}[language=Python]
-estimator = Estimator()
-qnn = EstimatorQNN(circuit=ansatz_circuit,
-                   observables=hamiltonian,
-                   input_params=[],
-                   weight_params=ansatz_params,
-                   estimator=estimator)
-qnn_model = TorchConnector(qnn)
-\end{lstlisting}
+        
     \item Measurement of both energy and magnetization observables.
     The relevant code are listed as follows:
-    \begin{lstlisting}[language=Python]
-x_obs = SparsePauliOp.from_list([(f"{'I'*i + 'X' + 'I'*(n_qubits - i - 1)}", 1.0) for i in range(n_qubits)])
-mx = estimator.run(circuits=ansatz_circuit, observables=x_obs, parameter_values=[final_weights]).result().values[0] / n_qubits
-    \end{lstlisting}
+    
     \end{itemize}
     \item \textbf{Classical Component:}
     \begin{itemize}
@@ -367,14 +265,14 @@ This section is intended to present the findings from the Quantum Neural Network
 \subsubsection{Exact Diagonalization}
 The Figure \ref{6} provides valuable insights into the behavior of the one-dimensional transverse field quantum Ising model, particularly as solved by exact diagonalization. These results serve as the benchmark for evaluating the performance of the Quantum Neural Network (QNN) approach discussed in the report.
 
-Overall trend is For all system sizes (N), the magnetization in the x-direction, <X>, is close to zero when the transverse field h is very small compared to the coupling J (here, J=1). As h increases, <X> rises, eventually saturating close to 1 when h is much larger than J. When $h \ll J$, the nearest-neighbor spin-spin interaction term ($-J\sum\sigma_i^z\sigma_i^{z+1}$) dominates the Hamiltonian. The spins prefer to align along the z-axis, leading to a small expectation value for $\sigma_i^x$. When $h\gg J$, the external field term ($\-h\sum\sigma_i^x$) dominates. The spins align with this strong external field in the x-direction, so <X> approaches 1.
+Overall trend is For all system sizes (N), the magnetization in the x-direction, $\langle X \rangle$, is close to zero when the transverse field h is very small compared to the coupling J (here, J=1). As h increases, $\langle X \rangle$ rises, eventually saturating close to 1 when h is much larger than J. When $h \ll J$, the nearest-neighbor spin-spin interaction term ($-J\sum\sigma_i^z\sigma_i^{z+1}$) dominates the Hamiltonian. The spins prefer to align along the z-axis, leading to a small expectation value for $\sigma_i^x$. When $h\gg J$, the external field term ($-h\sum\sigma_i^x$) dominates. The spins align with this strong external field in the x-direction, so $\langle X \rangle$ approaches 1.
 
-It also indicates the phase transition that The region where <X> shows a sharp increase (around h=1 since J=1) is characteristic of the quantum phase transition in this model. The system transitions from a magnetically ordered phase (primarily along z) to a paramagnetic phase (aligned with the x-field). The transition from low <X> to high <X> becomes steeper and sharper as the system size N increases. This is a common feature of phase transitions: in finite systems, the transition is smoothed out, but it becomes a non-analyticity in the thermodynamic limit ($N \to \infty$). The plot clearly shows the curves for larger N exhibiting a more abrupt change.
+It also indicates the phase transition that The region where $\langle X \rangle$ shows a sharp increase (around h=1 since J=1) is characteristic of the quantum phase transition in this model. The system transitions from a magnetically ordered phase (primarily along z) to a paramagnetic phase (aligned with the x-field). The transition from low $\langle X \rangle$ to high $\langle X \rangle$ becomes steeper and sharper as the system size N increases. This is a common feature of phase transitions: in finite systems, the transition is smoothed out, but it becomes a non-analyticity in the thermodynamic limit ($N \to \infty$). The plot clearly shows the curves for larger N exhibiting a more abrupt change.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{images/classical_solution.png}
-    \caption{Magnetization <X> by Exact Diagonalization}
+    \caption{Magnetization $\langle X \rangle$ by Exact Diagonalization}
     \label{6}
 \end{figure}
 
@@ -417,7 +315,7 @@ While Exact Diagonalization provides a solid foundation and exact benchmarks for
     \begin{minipage}{0.48\textwidth}
         \centering
         \includegraphics[width=\linewidth]{images/mx_DMRG.png} % Replace with your second image file
-        \caption{Magnetization <X> by DMRG (m=20)}
+        \caption{Magnetization $\langle X \rangle$ by DMRG (m=20)}
         \label{dmrg_b}
     \end{minipage}
 \end{figure}
@@ -427,7 +325,7 @@ While Exact Diagonalization provides a solid foundation and exact benchmarks for
 \subsubsection{QML: Ground State Energy E vs h}
 The firgure \ref{11} captures the general physical trends: The energy plot generally aligns well with the expected physical behavior for the system sizes shown (N=2 to 10).
 
-At small transverse fields ($h\ll g$), E approaches approximately -NJ. For example, at h=0.01, E for N=10 is close to -10. At large transverse fields ($h\gg g$), E tends towards -Nh. For instance, at h=100, E for N=10 is close to -1000. The energy correctly becomes more negative as the system size N increases. The characteristic change in behavior around the critical region ($h \approx J=1$) is visible. 
+At small transverse fields ($h\ll g$), E approaches approximately -NJ. For example, at h=0.01, E for N=10 is close to -10. At large transverse fields ($h\gg g$), E tends towards -Nh. For instance, at h=100, E for N=10 is close to -1000. The energy correctly becomes more negative as the system size N increases. The characteristic change in behavior around the critical region ($h\approx J=1$) is visible. 
 
 The energy curves appear relatively smooth and continuous across the range of h, suggesting that the QML approach is producing stable energy estimates for these system sizes. For ground state energy, these QML results appear qualitatively reasonable for N=2 to 10. A quantitative comparison with exact diagonalization would be needed to assess precise accuracy.
 \begin{figure}[H]
@@ -451,14 +349,14 @@ There are few potential causes for deviations:
     \item \textbf{Incomplete Convergence:} For the larger system sizes within this range (e.g., N=6 to N=10), 500 epochs might simply not have been enough for the optimizer to find parameters that accurately represent the true ground state, especially for an observable like magnetization which can be more sensitive to the wavefunction details than the energy itself. The optimization landscape can become more complex with increasing N.
     \item \textbf{Stuck in Local Minima:} The optimizer might have gotten trapped in a local minimum within those 500 epochs, yielding a state that is close in energy but poor for other observables.
     \item \textbf{Optimization Difficulties:} The classical optimizer might be failing to find the true ground state parameters, especially as N increases. And the choice of optimizer and learning rate might not have been optimal, leading to slow convergence or premature stalling.
-    \item \textbf{Ansatz Limitations:} While the energy might appear converged, the chosen ansatz might still not be expressive enough to capture the true ground state faithfully for all observables, even after 500 epochs. The parameters found after 500 epochs represent the best approximation within the given ansatz and optimization run.
+    \item \textbf{Ansatz Limitations:} The energy might appear converged, the chosen ansatz might still not be expressive enough to capture the true ground state faithfully for all observables, even after 500 epochs. The parameters found after 500 epochs represent the best approximation within the given ansatz and optimization run.
     \item \textbf{Convergence for Energy vs. Other Observables:} It's a common observation in variational algorithms that convergence for the energy (the cost function) doesn't automatically guarantee convergence for all other physical observables. The parameters that minimize energy might not be precisely the same ones that give the most accurate expectation value for magnetization if the optimization hasn't fully reached the true ground state.
 \end{itemize}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{images/magnetization_vs_h_multiprocess.png}
-    \caption{Magnetization <X> by QML Method (epochs = 500)}
+    \caption{Magnetization $\langle X \rangle$ by QML Method (epochs = 500)}
     \label{12}
 \end{figure}
 
@@ -494,7 +392,7 @@ There are few possible reasons for the behavior.
     \begin{subfigure}[b]{0.32\textwidth}
         \centering
         \includegraphics[width=\linewidth]{images/cmp_X.png} % Replace with your third image
-        \caption{Magnetization <X>}
+        \caption{Magnetization $\langle X \rangle$}
         \label{(b)}
     \end{subfigure}
     \hfill % Space between subfigures
@@ -502,7 +400,7 @@ There are few possible reasons for the behavior.
     \begin{subfigure}[b]{0.32\textwidth}
         \centering
         \includegraphics[width=\linewidth]{images/cmp_Z.png} % Replace with your second image
-        \caption{Magnetization <Z>}
+        \caption{Magnetization $\langle Z \rangle$}
         \label{(c)}
     \end{subfigure}
     
@@ -532,8 +430,7 @@ In conclusion, Quantum Neural Networks provide a promising framework for quantum
 % -----------------------------------Appendix----------------------------------------
 
 \appendix
-\section{Inserting Python Codes}
-
+\section{QML Method Implementation}
 
 
 \begin{lstlisting}
@@ -645,6 +542,8 @@ for n, E0, mz, mx in results:
     print(f"N={n}: E0={E0:.6f}, <Z>={mz:.6f}, <X>={mx:.6f}")
 \end{lstlisting}
 
+\section{Declaration}
+We hereby declare that all the work done in this project is of our independent effort. To see more details, please move forward to our github repository \textbf{quantum-many-body-by-QML}. Here is (https://github.com/jindahe/quantum-many-body-by-QML) github link.
 
 
 \end{document}
