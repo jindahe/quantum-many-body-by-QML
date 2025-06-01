@@ -1,19 +1,19 @@
 # Fdb version 4
-["bibtex QISE_Template"] 1748766813 "QISE_Template.aux" "QISE_Template.bbl" "QISE_Template" 1748766816 0
-  "./QISE_TemplateNotes.bib" 1748766814 103 48ad29797468f16e2853d8797278d7af ""
+["bibtex QISE_Template"] 1748766813 "QISE_Template.aux" "QISE_Template.bbl" "QISE_Template" 1748767332 0
+  "./QISE_TemplateNotes.bib" 1748767331 103 48ad29797468f16e2853d8797278d7af ""
   "/usr/local/texlive/2023/texmf-dist/bibtex/bst/revtex4-1/apsrev4-1.bst" 1602107945 71515 e333383ed72bf24aa6de7e8cabb55f84 ""
-  "QISE_Template.aux" 1748766814 5895 ac22e67073b78e4158b7a168cfe7e5e4 "xelatex"
+  "QISE_Template.aux" 1748767331 5895 ac22e67073b78e4158b7a168cfe7e5e4 "xelatex"
   (generated)
   "QISE_Template.bbl"
   "QISE_Template.blg"
   (rewritten before read)
-["xdvipdfmx"] 1748766815 "QISE_Template.xdv" "QISE_Template.pdf" "QISE_Template" 1748766816 0
-  "QISE_Template.xdv" 1748766814 346536 b0e1ac27f63ec885068eb91b2e18386e "xelatex"
+["xdvipdfmx"] 1748767331 "QISE_Template.xdv" "QISE_Template.pdf" "QISE_Template" 1748767332 0
+  "QISE_Template.xdv" 1748767331 346524 2f5a3c70340e6e1805d038c717ff4d4e "xelatex"
   (generated)
   "QISE_Template.pdf"
   (rewritten before read)
-["xelatex"] 1748766814 "/Users/jinboyu/Documents/GitHub/quantum-many-body-by-QML/template/QISE_Template.tex" "QISE_Template.xdv" "QISE_Template" 1748766816 0
-  "/Users/jinboyu/Documents/GitHub/quantum-many-body-by-QML/template/QISE_Template.tex" 1748766812 39509 b33170b4d0712208b7adac19109695c2 ""
+["xelatex"] 1748767330 "/Users/jinboyu/Documents/GitHub/quantum-many-body-by-QML/thesis/QISE_Template.tex" "QISE_Template.xdv" "QISE_Template" 1748767332 0
+  "/Users/jinboyu/Documents/GitHub/quantum-many-body-by-QML/thesis/QISE_Template.tex" 1748767330 39511 8e500b3c1a5ded53f148895aefa015e7 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/local/texlive/2023/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex9.tfm" 1246382020 996 a18840b13b499c08ac2de96a99eda4bc ""
@@ -194,9 +194,9 @@
   "/usr/local/texlive/2023/texmf-dist/web2c/texmf.cnf" 1677365944 40745 87bb86a62d462f93a1efc6b0c65c872e ""
   "/usr/local/texlive/2023/texmf-var/web2c/xetex/xelatex.fmt" 1706189996 10502824 14f6e5ba46cd0a77feff623fc6a80388 ""
   "/usr/local/texlive/2023/texmf.cnf" 1678822455 577 1b2b1af17af2508fb20dd85783af4050 ""
-  "QISE_Template.aux" 1748766814 5895 ac22e67073b78e4158b7a168cfe7e5e4 "xelatex"
+  "QISE_Template.aux" 1748767331 5895 ac22e67073b78e4158b7a168cfe7e5e4 "xelatex"
   "QISE_Template.bbl" 1748766814 1981 2371da0eeaa9c49fd2eddf057334b8bb "bibtex QISE_Template"
-  "QISE_Template.tex" 1748766812 39509 b33170b4d0712208b7adac19109695c2 ""
+  "QISE_Template.tex" 1748767330 39511 8e500b3c1a5ded53f148895aefa015e7 ""
   "images//屏幕截图 2025-05-30 165036.png" 1748762853 111965 90efd0373717bd8379710f59a8f5d2a6 ""
   "images/E_0_dia.png" 1748762853 86195 54936a2b58b580316e6eaaf62a2c6a3b ""
   "images/E_0_dia_1.png" 1748762853 49266 df555dfcc5a2a1eee72c08becac70a8a ""

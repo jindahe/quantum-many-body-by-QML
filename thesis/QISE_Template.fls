@@ -1,8 +1,8 @@
-PWD /Users/jinboyu/Documents/GitHub/quantum-many-body-by-QML/template
+PWD /Users/jinboyu/Documents/GitHub/quantum-many-body-by-QML/thesis
 INPUT /usr/local/texlive/2023/texmf.cnf
 INPUT /usr/local/texlive/2023/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2023/texmf-var/web2c/xetex/xelatex.fmt
-INPUT /Users/jinboyu/Documents/GitHub/quantum-many-body-by-QML/template/QISE_Template.tex
+INPUT /Users/jinboyu/Documents/GitHub/quantum-many-body-by-QML/thesis/QISE_Template.tex
 OUTPUT QISE_Template.log
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/revtex4-1/revtex4-1.cls
 INPUT /usr/local/texlive/2023/texmf-dist/tex/latex/revtex4-1/revtex4-1.cls

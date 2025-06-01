@@ -140,7 +140,7 @@ After sweeping through the entire chain from left to right, a reverse sweep is p
 \subsubsection{Advantages.}
 One of the key strengths of DMRG lies in its ability to drastically reduce the effective Hilbert space dimension by retaining only the most significant quantum states. While exact diagonalization requires handling the full Hilbert space of dimension $2^N$ for a system of $N$ spin-$\tfrac{1}{2}$ particles, DMRG keeps only the top $m$ eigenstates of the reduced density matrix. This allows each superblock to operate in a Hilbert space of dimension $m^2 \cdot d^2$, where $d$ is the local dimension (typically $d=2$), as opposed to the full $2^N$ scaling.
 
-This efficient truncation ensures that DMRG scales polynomially with system size and remains tractable for large $N$. In addition, DMRG is variational, so the obtained ground state energy is an upper bound to the true ground state energy. It also provides accurate access to local observables such as magnetization in the $x$- and $z$-directions. These features make DMRG an ideal benchmark for evaluating the performance of variational quantum algorithms when N becomes large.
+This efficient truncation ensures that DMRG scales polynomially with system size and remains tractable for large $N$. In addition, DMRG is variational, so the obtained ground state energy is an upper bound to the true ground state energy. It also provides accurate access to local observables such as magnetization in the $x$- and $z$-directions. These features make DMRG an ideal benchmark for evaluating the performance of variational quantum algorithms when $N$ becomes large.
 
 % -----------------------------------4----------------------------------------
 \section{Quantum Machine Learning Method} 
